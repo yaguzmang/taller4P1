@@ -1,0 +1,39 @@
+{% extends 'temperatures/base.html' %}
+{% block content %}
+<div class="container">
+    <form method="get">
+        <label>Inserte el valor y sus datos asociados</label><br>
+        <label>Valor: </label>
+        <input type="number" name="valor" min="0" required><br>
+
+        <label>Código del Sensor: </label>
+        <input name="codigos" required><br>
+
+        <label>Observación: </label>
+        <input name="observacion" required><br>
+
+        <label>Origen: </label>
+        <select name="origen" required>
+            <option value="">Seleccionar...</option>
+            <option>Sensor en terreno</option>
+            <option>Imagen satelital</option>
+            <option>Imagen dron</option>
+            <option>Dato derivado</option>
+        </select><br>
+
+        <label>Fecha: </label>
+        <input name="fecha" required><br>
+
+        <button type="submit">Agregar</button><br>
+    </form>
+    {% for temperature in temperatures %}
+    <ul class="list-group">
+        <li class="list-group-item">Valor = {{temperature.valor}}</li>
+        <li class="list-group-item">Código del sensor: {{temperature.codigos}}</li>
+        <li class="list-group-item">Observación: {{temperature.observacion}}</li>
+        <li class="list-group-item">Origen: {{temperature.origen}}</li>
+        <li class="list-group-item">Fecha: {{temperature.fecha}}</li>
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}
